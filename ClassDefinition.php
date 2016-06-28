@@ -19,6 +19,14 @@ class Cat
         return $this->position;
     }
 
+    public function move($x, $y)//有沒有人改寫了？！
+    {
+        $this->position['x'] += $x;
+        $this->position['y'] += $y;
+
+        return $this->position;
+    }
+
     public function resetPosition()
     {
         $this->innerFunction();
@@ -45,6 +53,10 @@ echo "<br>";
 
 $movePosition = $pet->resetPosition();
 echo "(".$movePosition['x'].", ".$movePosition['y'].")";
+
+$movePosition = $pet->move(1,1);
+echo "(".$movePosition['x'].", ".$movePosition['y'].")";
+echo "<br>";
 
 
 
