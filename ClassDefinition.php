@@ -71,6 +71,3 @@ echo "(".$movePosition['x'].", ".$movePosition['y'].")";
 $movePosition = $pet->move(1,1);
 echo "(".$movePosition['x'].", ".$movePosition['y'].")";
 echo "<br>";
-
-
-$pet->setName("hi");
