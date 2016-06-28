@@ -18,6 +18,13 @@ class Cat
 
         return $this->position;
     }
+
+    public function resetPosition()
+    {
+        $this->moveTo(0,0);
+
+        return $this->position;
+    }
 }
 
 
@@ -29,3 +36,9 @@ echo "<br>";
 $movePosition = $pet->moveTo(3,5);
 echo "(".$movePosition['x'].", ".$movePosition['y'].")";
 echo "<br>";
+
+$movePosition = $pet->resetPosition();
+echo "(".$movePosition['x'].", ".$movePosition['y'].")";
+
+
+
