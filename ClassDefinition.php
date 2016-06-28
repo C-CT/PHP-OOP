@@ -9,3 +9,8 @@ class Cat
         $this->name = $name;
     }
 }
+
+
+$pet = new Cat("Kitty");
+
+echo $pet->name;
