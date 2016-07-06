@@ -23,6 +23,23 @@ class Animal
 
         return $this->position;
     }
+
+    public function getFood($foodName)//從外部得到食物
+    {
+        echo "得到食物".$foodName."～<br>";
+        $this->eat($foodName);//暫時在這觸發 eat 的功能
+    }
+
+    protected function eat($foodName)//子類別自己可以控制要不要吃
+    {
+        echo "正在吃".$foodName."～<br>";
+        $this->digest($foodName);//有吃下去，一定要消化，子類別不能控制
+    }
+
+    private function digest($foodName)//消化功能
+    {
+        echo "正在消".$foodName."～<br>";
+    }
 }
 
 class Cat extends Animal
@@ -55,6 +72,8 @@ echo "<br>";
 $positionCat = $petCat->move(1,1);//貓類別繼承動物類別，因為是 public 所以可以直接使用
 echo $petCat->getPetName()."的位置:(".$positionCat['x'].",".$positionCat['y'];
 echo "<br>";
+
+$petCat->getFood("小魚");
 
 
 echo "<br>END<br>";
