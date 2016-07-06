@@ -38,7 +38,7 @@ class Animal
 
     private function digest($foodName)//消化功能
     {
-        echo "正在消".$foodName."～<br>";
+        echo "正在消化".$foodName."～<br>";
     }
 }
 
@@ -63,6 +63,35 @@ class Cat extends Animal
     }
 }
 
+class Dog extends Animal //跟貓類別有很多重覆，也許還可以再抽象出一層？
+{
+    private $petName;
+
+    public function __construct($name)
+    {
+        parent::__construct("狗");//呼叫父類別時，使用 parent::   用來設定物種名稱，一次性，不會改變
+        $this->petName = $name;//設定竉物名稱
+    }
+
+    public function getPetName()
+    {
+        return $this->petName;
+    }
+
+    public function setPetName($petName)//竉物名稱是可以改變的
+    {
+        $this->petName = $petName;
+    }
+
+    public function move($x, $y)
+    {
+        $this->position['x'] += $x*2;
+        $this->position['y'] += $y*2;
+
+        return $this->position;
+    }
+}
+
 $petCat = new Cat("Kitty");//產生貓別，初始化時設定物種名稱。傳入竉物名稱。
 echo $petCat->getAnimalType();//貓類別繼承動物類別，因為是 public 所以可以直接使用
 echo "<br>";
@@ -74,6 +103,19 @@ echo $petCat->getPetName()."的位置:(".$positionCat['x'].",".$positionCat['y']
 echo "<br>";
 
 $petCat->getFood("小魚");
+
+
+$petDog = new Dog("Wangwang");//產生貓別，初始化時設定物種名稱。傳入竉物名稱。
+echo $petDog->getAnimalType();//貓類別繼承動物類別，因為是 public 所以可以直接使用
+echo "<br>";
+echo $petDog->getPetName();
+echo "<br>";
+
+$positionDog = $petDog->move(1,1);//貓類別繼承動物類別，因為是 public 所以可以直接使用
+echo $petDog->getPetName()."的位置:(".$positionDog['x'].",".$positionDog['y'];
+echo "<br>";
+
+$petCat->getFood("骨頭");
 
 
 echo "<br>END<br>";
