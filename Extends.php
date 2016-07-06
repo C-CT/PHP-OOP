@@ -3,15 +3,25 @@
 class Animal
 {
     private $animalType;//用 private 存放物種名稱，只在一開始時使用，後續不再改變
+    protected $position;
 
     public function __construct($animalTypeFromOut)//從外部傳入物種名稱
     {
         $this->animalType = $animalTypeFromOut;
+        $this->position = ['x'=>0, 'y'=>0];
     }
 
     public function getAnimalType()//取得物種名稱
     {
         return $this->animalType;
+    }
+
+    public function move($x, $y)
+    {
+        $this->position['x'] += $x;
+        $this->position['y'] += $y;
+
+        return $this->position;
     }
 }
 
@@ -37,8 +47,14 @@ class Cat extends Animal
 }
 
 $petCat = new Cat("Kitty");//產生貓別，初始化時設定物種名稱。傳入竉物名稱。
-echo $petCat->getAnimalType();
+echo $petCat->getAnimalType();//貓類別繼承動物類別，因為是 public 所以可以直接使用
 echo "<br>";
 echo $petCat->getPetName();
+echo "<br>";
+
+$positionCat = $petCat->move(1,1);//貓類別繼承動物類別，因為是 public 所以可以直接使用
+echo $petCat->getPetName()."的位置:(".$positionCat['x'].",".$positionCat['y'];
+echo "<br>";
+
 
 echo "<br>END<br>";
