@@ -1,5 +1,4 @@
-<?php
-//中文
+<?php//中文
 class Cat3
 {
     protected $name;//屬性
