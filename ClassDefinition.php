@@ -1,6 +1,6 @@
 <?php
-
-class Cat
+//中文
+class Cat3
 {
     protected $name;//屬性
     protected $position;
